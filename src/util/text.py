@@ -2,8 +2,8 @@ import pygame
 from src.util.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
 FONT_COLOR = (255, 255, 255)
-FONT_SIZE = 22
-FONT_STYLE = 'freesansbold.ttf'
+FONT_SIZE = 15
+FONT_STYLE = 'src/assets/font.ttf'
 
 
 def draw_message_component(

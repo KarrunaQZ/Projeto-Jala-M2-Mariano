@@ -4,6 +4,7 @@ import random
 from src.component.adventurer import Adventurer
 from src.component.obstacle.obstacle_manager import ObstacleManager
 from src.component.power_up.power_up_manager import PowerUpManager
+
 from src.util.constants import TITLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, BACKGROUND, FPS
 from src.util.text import draw_message_component
 
@@ -37,7 +38,13 @@ class Game:
         self.playing = True
         while self.playing:
             if not self.running:
-                self.show_initial_menu()
+                if self.death_count == 0:
+                    self.run() 
+                else:
+                    self.draw_restart_message()
+                pygame.display.update()
+                pygame.display.flip()
+                self.handle_events_on_menu()
         pygame.display.quit()
         pygame.quit()        
 
@@ -50,19 +57,6 @@ class Game:
         pygame.display.update()
         pygame.display.flip()
         self.handle_events_on_menu()
-
-    def draw_start_message(self):
-        draw_message_component(
-            "THE ADVENTURER'S JOURNEY",
-            self.display, font_size=54,
-            y_center=(SCREEN_HEIGHT // 2) - 40
-        )
-        draw_message_component(
-            "Press any key to start",
-            self.display,
-            y_center=(SCREEN_HEIGHT // 2) + 20
-        )
-        self.player.draw(self.display)
 
     def draw_restart_message(self):
         draw_message_component(
@@ -93,7 +87,11 @@ class Game:
                 self.running = False
                 self.playing = False
             elif event.type == pygame.KEYDOWN:
-                self.run()
+                if event.key == pygame.K_ESCAPE:
+                    from src.component.menu import main_menu
+                    main_menu()
+                else:
+                    self.run()
                 
     def run(self):
         self.running = True
@@ -133,8 +131,11 @@ class Game:
         self.draw_background()
         self.player.draw(self.display)
         self.obstacle_manager.draw(self.display)
-        self.draw_score()
-        self.draw_power_up_time()
+        
+        if self.running:  # Verifica se o jogo está em execução
+            self.draw_score()
+            self.draw_power_up_time()
+            
         self.power_up_manager.draw(self.display)
         pygame.display.update()
         pygame.display.flip()

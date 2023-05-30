@@ -1,10 +1,11 @@
 import pygame, sys
-from button import Button
+from src.component.button import Button
+from src.component.game import Game
 
 pygame.init()
 
 SCREEN = pygame.display.set_mode((927, 435))
-pygame.display.set_caption("Menu")
+pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
 
 BG = pygame.image.load("src/assets/background.jpg")
 
@@ -14,28 +15,8 @@ def get_font(size): # Retorna a fonte Press-Start-2P no tamanho desejado
 def play():
     while True:
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
-
-        SCREEN.fill("black")
-
-        PLAY_TEXT = get_font(30).render("This is the PLAY screen.", True, "White")
-        PLAY_RECT = PLAY_TEXT.get_rect(center=(463, 160))
-        SCREEN.blit(PLAY_TEXT, PLAY_RECT)
-
-        PLAY_BACK = Button(image=None, pos=(463, 270), 
-                            text_input="BACK", font=get_font(40), base_color="White", hovering_color="Green")
-
-        PLAY_BACK.changeColor(PLAY_MOUSE_POS)
-        PLAY_BACK.update(SCREEN)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
-                    main_menu()
-
-        pygame.display.update()
+        game = Game()
+        game.execute()
     
 def options():
     while True:
