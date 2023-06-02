@@ -170,8 +170,8 @@ class Game:
                 draw_message_component(
                     f"Sword enable for {time_to_show} seconds",
                     self.display,
-                    font_size=18,
-                    x_center=500,
+                    font_size=16,
+                    x_center=300,
                     y_center=40
                 )
             else:

@@ -170,6 +170,7 @@ class Adventurer(Sprite):
         self.jump = False
         self.slide = False
         self.attack = False
+        self.has_power_up = False
 
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))
