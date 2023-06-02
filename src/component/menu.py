@@ -1,16 +1,20 @@
 import pygame, sys
+import pygame.mixer
+import random
+
 from src.component.button import Button
 from src.component.game import Game
-from src.util.constants import BACKGROUND_MENU, SCREEN, ICON
+from src.util.constants import BACKGROUND_MENU, SCREEN, ICON, TITLE
+from src.util.text import FONT_STYLE
 
 pygame.init()
 
 pygame.display.set_icon(ICON)
-pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
+pygame.display.set_caption("The Adventurer's Journey")
 
 
-def get_font(size): # Retorna a fonte Press-Start-2P no tamanho desejado
-    return pygame.font.Font("src/assets/font.ttf", size)
+def get_font(size): 
+    return pygame.font.Font(FONT_STYLE, size)
 
 def wrap_text(text, font, max_width):
     words = text.split(" ")

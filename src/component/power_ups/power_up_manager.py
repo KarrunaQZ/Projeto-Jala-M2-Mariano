@@ -26,6 +26,21 @@ class PowerUpManager:
                 power_up.start_time = pygame.time.get_ticks()
                 player.has_power_up = True
                 player.power_up_time = power_up.start_time + (power_up.duration * 1000)
+
+                if isinstance(power_up, Sword):
+                    player.sword_active = True 
+                    player.shield_active = False
+                    player.rotten_apple_active = False
+                elif isinstance(power_up, Shield):
+                    player.shield_active = True 
+                    player.sword_active = False
+                    player.rotten_apple_active = False
+                elif isinstance(power_up, Rotten_apple):
+                    player.rotten_apple_active = True
+                    player.shield_active = True 
+                    player.sword_active = False
+                    
+                    
                 self.power_ups.remove(power_up)
 
     def draw(self, screen):
@@ -35,3 +50,4 @@ class PowerUpManager:
     def reset_power_ups(self):
         self.power_ups = []
         self.when_appears = random.randint(200, 300)
+

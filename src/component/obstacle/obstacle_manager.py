@@ -22,7 +22,7 @@ class ObstacleManager:
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             offset = (obstacle.rect.x - game.player.rect.x), (obstacle.rect.y - game.player.rect.y)
-            if game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and game.player.attack and type(obstacle) != Metal:
+            if game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and game.player.attack and type(obstacle) != Metal or game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and game.player.shield_active and type(obstacle) != Metal : 
                 self.obstacles.remove(obstacle)
             elif game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and (not game.player.attack or (type(obstacle) == Metal)):
                 self.death_sound.play()

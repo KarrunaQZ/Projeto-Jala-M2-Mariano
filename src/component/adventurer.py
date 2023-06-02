@@ -3,7 +3,6 @@ import pygame
 from pygame.sprite import Sprite
 from src.util.constants import ADVENTURER_IDLE, ADVENTURER_RUN, ADVENTURER_JUMP, ADVENTURER_FALL, ADVENTURER_SLIDE, ADVENTURER_ATTACK, ADVENTURER_AIR_ATTACK, AIR_ATTACK_VEL, ATTACK_VEL, SLIDE_VEL, JUMP_VEL, ADVENTURER_Y, ADVENTURER_X
 
-
 class Adventurer(Sprite):
     def __init__(self):
         self.image = ADVENTURER_IDLE[0].convert_alpha()
@@ -22,6 +21,10 @@ class Adventurer(Sprite):
         self.slide = False
         self.attack = False
         self.shield_active = False
+        self.sword_active = False
+        self.rotten_apple_active = False
+        self.power_up_applied = False
+        
         pygame.mixer.init() # inicializa o mixer
         self.jump_sound = pygame.mixer.Sound('src/assets/sound/jump.ogg') # carrega o arquivo de som para pular
         self.sword_sound = pygame.mixer.Sound('src/assets/sound/sword_hit.wav') # carrega o arquivo de som para pular
@@ -57,18 +60,28 @@ class Adventurer(Sprite):
             self.slide = True
             self.attack = False
         elif (user_input[pygame.K_RIGHT] or user_input[pygame.K_d]) and self.jump and self.has_power_up:
-            self.run = False
-            self.slide = False
-            self.attack = True
-            self.sword_sound.play()# toca o som de ataque
-            self.sword_sound.set_volume(0.06)
+            if self.sword_active:
+                self.run = False
+                self.slide = False
+                self.attack = True
+                self.sword_sound.play()
+                self.sword_sound.set_volume(0.06)
+            elif self.shield_active:
+                pass
+            elif self.rotten_apple_active:
+                 pass
         elif (user_input[pygame.K_RIGHT] or user_input[pygame.K_d]) and not self.jump and self.has_power_up:
-            self.run = False
-            self.jump = False
-            self.slide = False
-            self.attack = True
-            self.sword_sound.play()# toca o som de ataque
-            self.sword_sound.set_volume(0.06)
+            if self.sword_active:
+                self.run = False
+                self.jump = False
+                self.slide = False
+                self.attack = True
+                self.sword_sound.play()
+                self.sword_sound.set_volume(0.06)
+            elif self.shield_active:
+                pass
+            elif self.rotten_apple_active:
+                pass
         elif not self.jump and not self.slide and not self.attack:
             self.run = True
 

@@ -1,16 +1,15 @@
 import pygame
 import pygame.mixer
 import random
+
 from src.component.adventurer import Adventurer
 from src.component.obstacle.obstacle_manager import ObstacleManager
 from src.component.power_ups.power_up_manager import PowerUpManager
-
 from src.util.constants import TITLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, BACKGROUND, FPS
 from src.util.text import draw_message_component
 
 
 class Game:
-
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -33,6 +32,7 @@ class Game:
         ]
         pygame.mixer.music.load(random.choice(self.music_list))
         pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.2)
 
     def execute(self):
         self.playing = True
@@ -50,9 +50,8 @@ class Game:
 
     def show_initial_menu(self):      
         self.display.blit(BACKGROUND, (0, 0))
-        if self.death_count == 0:
-            self.draw_start_message()
-        else:
+        if self.death_count >= 1:
+            
             self.draw_restart_message()
         pygame.display.update()
         pygame.display.flip()
@@ -122,15 +121,18 @@ class Game:
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.update_current_score()
-        self.power_up_manager.update(self.current_score, self.game_speed, self.player)
+        self.power_up_manager.update(self.current_score, self.game_speed, self.player)        
 
     def update_current_score(self):
         self.current_score += 1
         if self.high_score == 0 or self.high_score < self.current_score:
             self.high_score = self.current_score
         if self.current_score % 100 == 0:
-            self.game_speed += 0.5
-
+            self.game_speed += 0.5    
+        elif self.player.has_power_up and self.player.rotten_apple_active and not self.player.power_up_applied:
+            self.game_speed += 5
+            self.player.power_up_applied = True
+            
     def draw(self):
         self.clock.tick(FPS)
         self.draw_background()
@@ -155,6 +157,7 @@ class Game:
     def draw_score(self):
         high_score_message = "HIGH SCORE: " + str(int(self.high_score))
         score_message = "SCORE: " + str(int(self.current_score))
+        game_speed_massage = "SPEED: " + str(int(self.game_speed))
         draw_message_component(
             f'{high_score_message}',
             self.display,
@@ -166,6 +169,12 @@ class Game:
             self.display,
             x_center=730,
             y_center=80
+        )
+        draw_message_component(
+            f'{game_speed_massage}',
+            self.display,
+            x_center=750,
+            y_center=110
         )
 
     def draw_power_up_time(self):

@@ -1,13 +1,11 @@
 import pygame
 
 from random import randint
-
 from src.util.constants import SLIME
 from src.component.obstacle.obstacle import Obstacle
 
 
 class Slime(Obstacle):
-
     def __init__(self):
         images = SLIME
         index = randint(0, len(images)-1)

@@ -1,4 +1,5 @@
 import pygame.transform
+
 from src.util.constants import BIRD
 from src.component.obstacle.obstacle import Obstacle
 

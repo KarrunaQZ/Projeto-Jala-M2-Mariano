@@ -3,7 +3,7 @@ import os
 
 # Global
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), '..', "assets")
-TITLE = "The Adventurer's Journey (alpha edition)"
+TITLE = "The Adventurer's Journey"
 ICON = pygame.image.load(os.path.join(ASSETS_PATH, 'icon.png'))
 SCREEN_WIDTH = 927
 SCREEN_HEIGHT = 435
@@ -12,6 +12,7 @@ BACKGROUND_MENU = pygame.image.load(os.path.join(ASSETS_PATH, 'background-menu.j
 FPS = 30
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
+
 
 
 
@@ -137,3 +138,4 @@ APPLE_SIZE = 40
 APPLE = [
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'rotten apple/rotten apple.png')), (APPLE_SIZE, APPLE_SIZE))
 ]
+
