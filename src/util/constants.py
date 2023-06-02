@@ -131,3 +131,9 @@ SHIELD_SIZE = 40
 SHIELD = [
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'shield/shield.png')), (SHIELD_SIZE, SHIELD_SIZE))
 ]
+
+APPLE_SIZE = 40
+
+APPLE = [
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'rotten apple/rotten apple.png')), (APPLE_SIZE, APPLE_SIZE))
+]

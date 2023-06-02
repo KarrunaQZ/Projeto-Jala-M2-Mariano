@@ -1,17 +1,31 @@
 import pygame, sys
 from src.component.button import Button
 from src.component.game import Game
-from src.util.constants import BACKGROUND_MENU
+from src.util.constants import BACKGROUND_MENU, SCREEN, ICON
 
 pygame.init()
 
-
-SCREEN = pygame.display.set_mode((927, 435))
+pygame.display.set_icon(ICON)
 pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
 
 
 def get_font(size): # Retorna a fonte Press-Start-2P no tamanho desejado
     return pygame.font.Font("src/assets/font.ttf", size)
+
+def wrap_text(text, font, max_width):
+    words = text.split(" ")
+    lines = []
+    current_line = ""
+
+    for word in words:
+        if font.size(current_line + " " + word)[0] <= max_width:
+            current_line += " " + word
+        else:
+            lines.append(current_line.lstrip())
+            current_line = word
+    
+    lines.append(current_line.lstrip())
+    return lines
 
 def play():
     while True:
@@ -22,15 +36,21 @@ def play():
 def options():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
+        SCREEN.blit(BACKGROUND_MENU, (0, 0))
+        
 
-        SCREEN.fill("white")
+        OPTIONS_TEXT = "Na floresta mais perigosa do reino, um aventureiro destemido inicia uma jornada de coragem e determinação. Armado com sua poderosa espada, ele enfrenta uma infinidade de desafios mortais. A cada passo, ele se depara com slimes venenosos, morcegos mutantes e criaturas desconhecidas que habitam as sombras. A floresta é densa e imprevisível, cheia de armadilhas traiçoeiras e caminhos ocultos. Somente com sua habilidade e astúcia, ele conseguirá sobreviver a essa jornada épica e desafiadora. A cada vitória sobre os perigos da floresta, o aventureiro se aproxima cada vez mais de desvendar os segredos sombrios que assolam esse reino encantado, mas não se engane, quanto mais perto do coração da floresta, mais difícil será!"
 
-        OPTIONS_TEXT = get_font(30).render("This is the OPTIONS screen.", True, "Black")
-        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(463, 160))
-        SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
+        OPTIONS_LINES = wrap_text(OPTIONS_TEXT, get_font(13), 800)
+        OPTIONS_Y = 80
+        for line in OPTIONS_LINES:
+            OPTIONS_LINE_TEXT = get_font(15).render(line, True, "White")
+            OPTIONS_LINE_RECT = OPTIONS_LINE_TEXT.get_rect(center=(SCREEN.get_width() // 2, OPTIONS_Y))
+            SCREEN.blit(OPTIONS_LINE_TEXT, OPTIONS_LINE_RECT)
+            OPTIONS_Y += OPTIONS_LINE_TEXT.get_height() + 5
 
-        OPTIONS_BACK = Button(image=None, pos=(463, 270), 
-                            text_input="BACK", font=get_font(40), base_color="Black", hovering_color="Green")
+        OPTIONS_BACK = Button(image=None, pos=(463, 400), 
+                            text_input="BACK", font=get_font(20), base_color="White", hovering_color="Green")
 
         OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
         OPTIONS_BACK.update(SCREEN)
@@ -57,7 +77,7 @@ def main_menu():
         PLAY_BUTTON = Button(image=pygame.image.load("src/assets/Options Rect.png"), pos=(463, 150), 
                             text_input="PLAY", font=get_font(25), base_color="#d7fcd4", hovering_color="Green")
         OPTIONS_BUTTON = Button(image=pygame.image.load("src/assets/Options Rect.png"), pos=(463, 230), 
-                                text_input="OPTIONS", font=get_font(25), base_color="#d7fcd4", hovering_color="Green")
+                                text_input="History", font=get_font(25), base_color="#d7fcd4", hovering_color="Green")
         QUIT_BUTTON = Button(image=pygame.image.load("src/assets/Options Rect.png"), pos=(463, 310), 
                             text_input="QUIT", font=get_font(25), base_color="#d7fcd4", hovering_color="Green")
 
@@ -81,5 +101,3 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
-main_menu()

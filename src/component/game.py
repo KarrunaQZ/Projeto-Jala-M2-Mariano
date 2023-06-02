@@ -79,6 +79,11 @@ class Game:
             self.display,
             y_center=(SCREEN_HEIGHT // 2) - 50
         )
+        draw_message_component(
+            "Press ESC to menu",
+            self.display,
+            y_center=(SCREEN_HEIGHT // 2) + 200
+        )
 
     def handle_events_on_menu(self):
         for event in pygame.event.get():
@@ -168,7 +173,7 @@ class Game:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:
                 draw_message_component(
-                    f"Sword enable for {time_to_show} seconds",
+                    f"Power up enable for {time_to_show} seconds",
                     self.display,
                     font_size=16,
                     x_center=300,

@@ -3,6 +3,7 @@ import pygame
 
 from src.component.power_ups.sword import SWORD, Sword
 from src.component.power_ups.shield import SHIELD, Shield
+from src.component.power_ups.rotten_apple import APPLE, Rotten_apple
 
 
 class PowerUpManager:
@@ -13,7 +14,7 @@ class PowerUpManager:
     def generate_power_up(self, score):
         if len(self.power_ups) == 0 and self.when_appears == score:
             self.when_appears += random.randint(200, 300)
-            power_up_type = random.choice([Sword, Shield])
+            power_up_type = random.choice([Sword, Shield, Rotten_apple])
             self.power_ups.append(power_up_type())
 
     def update(self, score, game_speed, player):
