@@ -29,6 +29,7 @@ class Adventurer(Sprite):
         self.jump = False
         self.slide = False
         self.attack = False
+        self.shield_active = False
         pygame.mixer.init() # inicializa o mixer
         self.jump_sound = pygame.mixer.Sound('src/assets/sound/jump.ogg') # carrega o arquivo de som para pular
         self.sword_sound = pygame.mixer.Sound('src/assets/sound/sword_hit.wav') # carrega o arquivo de som para pular

@@ -3,7 +3,7 @@ import pygame.mixer
 import random
 from src.component.adventurer import Adventurer
 from src.component.obstacle.obstacle_manager import ObstacleManager
-from src.component.power_up.power_up_manager import PowerUpManager
+from src.component.power_ups.power_up_manager import PowerUpManager
 
 from src.util.constants import TITLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, BACKGROUND, FPS
 from src.util.text import draw_message_component

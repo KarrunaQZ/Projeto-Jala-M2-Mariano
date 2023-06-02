@@ -1,13 +1,13 @@
 import pygame
-from src.util.constants import SWORD
-from src.component.power_up.power_up import PowerUp
+from src.util.constants import SHIELD
+from src.component.power_ups.power_up import PowerUp
 
 
-class Sword(PowerUp):
+class Shield(PowerUp):
 
     def __init__(self):
         self.sprite_index = 0
-        super().__init__(SWORD, self.sprite_index)
+        super().__init__(SHIELD, self.sprite_index)
 
     def draw(self, display):
         self.image = self.images[self.sprite_index % len(self.images)].convert_alpha()
