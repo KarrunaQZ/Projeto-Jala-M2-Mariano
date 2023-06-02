@@ -5,6 +5,7 @@ from src.util.constants import BACKGROUND_MENU
 
 pygame.init()
 
+
 SCREEN = pygame.display.set_mode((927, 435))
 pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
 

@@ -10,9 +10,19 @@ SCREEN_HEIGHT = 435
 BACKGROUND = pygame.image.load(os.path.join(ASSETS_PATH, 'background.jpg'))
 BACKGROUND_MENU = pygame.image.load(os.path.join(ASSETS_PATH, 'background-menu.jpg'))
 FPS = 30
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
+
+
 
 #Adventurer
 ADVENTURER_SIZE = 100
+ADVENTURER_X = 130
+ADVENTURER_Y = 275
+JUMP_VEL = 8.5
+SLIDE_VEL = 8.5
+ATTACK_VEL = 8.5
+AIR_ATTACK_VEL = 8.5
 
 ADVENTURER_IDLE = [
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/idle/adventurer-idle-2-00.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
@@ -116,6 +126,8 @@ SWORD = [
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'sword/sword.png')), (SWORD_SIZE, SWORD_SIZE))
 ]
 
+SHIELD_SIZE = 40
+
 SHIELD = [
-    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'shield/shield.png')), (SWORD_SIZE, SWORD_SIZE))
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'shield/shield.png')), (SHIELD_SIZE, SHIELD_SIZE))
 ]

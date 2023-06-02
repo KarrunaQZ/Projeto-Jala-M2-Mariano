@@ -4,7 +4,6 @@ from src.component.obstacle.obstacle import Obstacle
 
 
 class Bird(Obstacle):
-
     def __init__(self):
         self.sprite_index = 0
         super().__init__(BIRD, self.sprite_index)

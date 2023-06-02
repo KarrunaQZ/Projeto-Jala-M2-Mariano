@@ -1,18 +1,10 @@
 import pygame
+
 from pygame.sprite import Sprite
-from src.util.constants import ADVENTURER_IDLE, ADVENTURER_RUN, ADVENTURER_JUMP, ADVENTURER_FALL, ADVENTURER_SLIDE, ADVENTURER_ATTACK, ADVENTURER_AIR_ATTACK
-
-
-ADVENTURER_X = 130
-ADVENTURER_Y = 275
-JUMP_VEL = 8.5
-SLIDE_VEL = 8.5
-ATTACK_VEL = 8.5
-AIR_ATTACK_VEL = 8.5
+from src.util.constants import ADVENTURER_IDLE, ADVENTURER_RUN, ADVENTURER_JUMP, ADVENTURER_FALL, ADVENTURER_SLIDE, ADVENTURER_ATTACK, ADVENTURER_AIR_ATTACK, AIR_ATTACK_VEL, ATTACK_VEL, SLIDE_VEL, JUMP_VEL, ADVENTURER_Y, ADVENTURER_X
 
 
 class Adventurer(Sprite):
-
     def __init__(self):
         self.image = ADVENTURER_IDLE[0].convert_alpha()
         self.rect = self.image.get_rect()

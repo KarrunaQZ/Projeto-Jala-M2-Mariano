@@ -1,12 +1,12 @@
 import pygame.time
+
+from random import randint
 from src.component.obstacle.bird import Bird
 from src.component.obstacle.metal import Metal
 from src.component.obstacle.slime import Slime
-from random import randint
 
 
 class ObstacleManager:
-
     def __init__(self):
         self.obstacles = []
         self.death_sound = pygame.mixer.Sound('src/assets/sound/die.wav')

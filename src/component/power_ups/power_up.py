@@ -1,11 +1,11 @@
 import random
 import pygame
+
 from pygame.sprite import Sprite
 from src.util.constants import SCREEN_WIDTH
 
 
 class PowerUp(Sprite):
-
     def __init__(self, images, index):
         self.images = images
         self.index = index

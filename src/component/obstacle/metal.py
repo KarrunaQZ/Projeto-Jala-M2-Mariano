@@ -1,11 +1,11 @@
-from random import randint
 import pygame
+
+from random import randint
 from src.util.constants import METAL
 from src.component.obstacle.obstacle import Obstacle
 
 
 class Metal(Obstacle):
-
     def __init__(self):
         images = METAL[randint(0, len(METAL)-1)]
         index = randint(0, len(images)-1)

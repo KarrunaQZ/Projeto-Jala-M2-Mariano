@@ -1,10 +1,10 @@
 import pygame
+
 from src.util.constants import SWORD
 from src.component.power_ups.power_up import PowerUp
 
 
 class Sword(PowerUp):
-
     def __init__(self):
         self.sprite_index = 0
         super().__init__(SWORD, self.sprite_index)

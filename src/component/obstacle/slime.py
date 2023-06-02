@@ -1,5 +1,7 @@
-from random import randint
 import pygame
+
+from random import randint
+
 from src.util.constants import SLIME
 from src.component.obstacle.obstacle import Obstacle
 
