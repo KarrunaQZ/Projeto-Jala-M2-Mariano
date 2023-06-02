@@ -1,7 +1,7 @@
 import pygame.time
 from src.component.obstacle.bird import Bird
 from src.component.obstacle.metal import Metal
-from src.component.obstacle.wood import Wood
+from src.component.obstacle.slime import Slime
 from random import randint
 
 
@@ -14,7 +14,7 @@ class ObstacleManager:
     def update(self, game):
         obstacle_type = [
             Metal(),
-            Wood(),
+            Slime(),
             Bird()
         ]
         if len(self.obstacles) == 0:

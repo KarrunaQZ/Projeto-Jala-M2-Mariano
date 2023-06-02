@@ -1,13 +1,13 @@
 import pygame, sys
 from src.component.button import Button
 from src.component.game import Game
+from src.util.constants import BACKGROUND_MENU
 
 pygame.init()
 
 SCREEN = pygame.display.set_mode((927, 435))
 pygame.display.set_caption("The Adventurer's Journey (alpha edition)")
 
-BG = pygame.image.load("src/assets/background.jpg")
 
 def get_font(size): # Retorna a fonte Press-Start-2P no tamanho desejado
     return pygame.font.Font("src/assets/font.ttf", size)
@@ -46,7 +46,7 @@ def options():
 
 def main_menu():
     while True:
-        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(BACKGROUND_MENU, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 

@@ -12,6 +12,7 @@ class Bird(Obstacle):
 
     def draw(self, display):
         self.image = self.images[self.sprite_index % len(self.images)].convert_alpha()
+        self.image = pygame.transform.scale(self.image, (42, 42))
         self.obstacle_mask = pygame.mask.from_surface(self.image)
         self.mask = self.obstacle_mask.to_surface(unsetcolor=(0, 0, 0, 0))
         display.blit(self.image, self.rect)

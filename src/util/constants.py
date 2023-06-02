@@ -8,6 +8,7 @@ ICON = pygame.image.load(os.path.join(ASSETS_PATH, 'icon.png'))
 SCREEN_WIDTH = 927
 SCREEN_HEIGHT = 435
 BACKGROUND = pygame.image.load(os.path.join(ASSETS_PATH, 'background.jpg'))
+BACKGROUND_MENU = pygame.image.load(os.path.join(ASSETS_PATH, 'background-menu.jpg'))
 FPS = 30
 
 #Adventurer
@@ -30,9 +31,9 @@ ADVENTURER_RUN = [
 ]
 
 ADVENTURER_JUMP = [
-    #pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-00.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
-    #pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-01.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
-    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-02.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE))
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-00.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-01.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-02.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE)),
     #pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'adventurer/jump/adventurer-jump-03.png')), (ADVENTURER_SIZE, ADVENTURER_SIZE))
 ]
 
@@ -79,39 +80,27 @@ BIRD = [
 # Wood
 WOOD_SIZE = 50
 
-SMALL_WOOD = [
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/small/small_wood_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/small/small_wood_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/small/small_wood_spike_03.png')), (WOOD_SIZE, WOOD_SIZE)),
-    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/small/small_wood_spike_04.png')), (WOOD_SIZE, WOOD_SIZE))
+SLIME = [
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'slime/slime-idle-0.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'slime/slime-idle-1.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'slime/slime-idle-2.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'slime/slime-idle-3.png')), (WOOD_SIZE, WOOD_SIZE))
 ]
 
-LONG_WOOD = [
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/long/long_wood_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/long/long_wood_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/long/long_wood_spike_03.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/long/long_wood_spike_04.png')), (WOOD_SIZE, WOOD_SIZE)),
-    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'wood/long/long_wood_spike_05.png')), (WOOD_SIZE, WOOD_SIZE))
-]
-
-WOOD = [
-    SMALL_WOOD,
-    LONG_WOOD
-]
 
 # Metal
 METAL_SIZE = 50
 
 SMALL_METAL = [
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/small_metal/small_metal_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/small_metal/small_metal_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/small_metal/small_metal_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/small_metal/small_metal_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/small_metal/small_metal_spike_03.png')), (WOOD_SIZE, WOOD_SIZE))
 ]
 
 LONG_METAL = [
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
-    # pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_03.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_01.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_02.png')), (WOOD_SIZE, WOOD_SIZE)),
+    pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_03.png')), (WOOD_SIZE, WOOD_SIZE)),
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'metal/long_metal/long_metal_spike_04.png')), (WOOD_SIZE, WOOD_SIZE))
 ]
 
